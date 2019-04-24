@@ -2480,6 +2480,7 @@ static void randomize_key(unsigned char* key,int key_data_len)
 #ifdef RANDOM_FILE
   FILE *f = fopen(RANDOM_FILE, "rb");
   if(f) {
+    setbuf(f, NULL);
     counter = aresx_uztosi(fread(key, 1, key_data_len, f));
     fclose(f);
   }
